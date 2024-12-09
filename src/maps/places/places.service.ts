@@ -1,30 +1,39 @@
 import { Injectable } from '@nestjs/common';
 import {
-  Client as GoogleMapsClient,
-  PlaceInputType,
+	Client as GoogleMapsClient,
+	PlaceInputType,
 } from '@googlemaps/google-maps-services-js';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class PlacesService {
-  constructor(private googleMapsClient: GoogleMapsClient) {}
-  async findPlaces(text: string) {
-    console.log(text);
-    try {
-      const { data } = await this.googleMapsClient.findPlaceFromText({
-        params: {
-          input: text,
-          inputtype: PlaceInputType.textQuery,
-          fields: ['place_id', 'formatted_address', 'geometry', 'name'],
-          key: 'AIzaSyBAl7zi3y37oDv0mTBKKU4dyT7S2mmPwTA',
-        },
-      });
+	constructor(
+		private googleMapsClient: GoogleMapsClient,
+		private configService: ConfigService,
+	) {}
+	async findPlaces(text: string) {
+		console.log(text);
+		try {
+			const { data } = await this.googleMapsClient.findPlaceFromText({
+				params: {
+					input: text,
+					inputtype: PlaceInputType.textQuery,
+					fields: [
+						'place_id',
+						'formatted_address',
+						'geometry',
+						'name',
+					],
+					key: this.configService.get('GOOGLE_MAPS_API_KEY'),
+				},
+			});
 
-      return data;
-    } catch (error) {
-      console.log(error);
-      if (error.response.status == '404') {
-        return error;
-      }
-    }
-  }
+			return data;
+		} catch (error) {
+			console.log(error);
+			if (error.response.status == '404') {
+				return error;
+			}
+		}
+	}
 }

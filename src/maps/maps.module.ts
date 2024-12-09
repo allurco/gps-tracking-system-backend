@@ -4,13 +4,13 @@ import { PlacesService } from './places/places.service';
 import { Client as GoogleMapsClient } from '@googlemaps/google-maps-services-js';
 
 @Module({
-  controllers: [PlacesController],
-  providers: [
-    PlacesService,
-    {
-      provide: GoogleMapsClient,
-      useValue: new GoogleMapsClient({}),
-    },
-  ],
+	controllers: [PlacesController],
+	providers: [
+		PlacesService,
+		{
+			provide: GoogleMapsClient,
+			useValue: new GoogleMapsClient({}),
+		},
+	],
 })
 export class MapsModule {}
