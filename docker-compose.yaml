@@ -1,0 +1,18 @@
+services:
+  app: 
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home/node/app
+    depends_on:
+      - db
+    environment:
+      - MONGO_URI=mongodb://root:root@db:27017
+  db:
+    build: ./.docker/mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27017:27017"

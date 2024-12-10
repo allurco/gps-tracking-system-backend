@@ -1,1 +1,5 @@
-GET http://localhost:3000/places?text=Rua G, 150 60875-577 São Bento Fortaleza CE Brasil
+GET http://localhost:3000/places?text=Av Amazonas Belo Horizonte
+###
+GET http://localhost:3000/directions?origin=EjlSLiBHLCAxNTAgLSBTw6NvIEJlbnRvLCBGb3J0YWxlemEgLSBDRSwgNjA4NzUtNTc3LCBCcmFzaWwiMRIvChQKEgm7hX5ug1rHBxFwc_jNYRv6-hCWASoUChIJqdxIRaVaxwcRSDMZu1OmuJw&destination=ChIJbasANaWgw5IRNPHZ5cRlMQY
+
+POST http://localhost:3000/routes/create
