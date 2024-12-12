@@ -2,4 +2,22 @@ GET http://localhost:3000/places?text=Av Amazonas Belo Horizonte
 ###
 GET http://localhost:3000/directions?origin=EjlSLiBHLCAxNTAgLSBTw6NvIEJlbnRvLCBGb3J0YWxlemEgLSBDRSwgNjA4NzUtNTc3LCBCcmFzaWwiMRIvChQKEgm7hX5ug1rHBxFwc_jNYRv6-hCWASoUChIJqdxIRaVaxwcRSDMZu1OmuJw&destination=ChIJbasANaWgw5IRNPHZ5cRlMQY
 
-POST http://localhost:3000/routes/create
+###
+
+POST http://localhost:3000/routes
+Content-Type: application/json
+
+{
+    "name": "Route 1",
+    "source_id": "EjlSLiBHLCAxNTAgLSBTw6NvIEJlbnRvLCBGb3J0YWxlemEgLSBDRSwgNjA4NzUtNTc3LCBCcmFzaWwiMRIvChQKEgm7hX5ug1rHBxFwc_jNYRv6-hCWASoUChIJqdxIRaVaxwcRSDMZu1OmuJw",
+    "destination_id": "ChIJbasANaWgw5IRNPHZ5cRlMQY"
+}
+
+
+###
+
+GET http://localhost:3000/routes/6758d3b6cfdccaf28c439c79
+
+###
+
+GET http://localhost:3000/routes

@@ -24,6 +24,16 @@ model Route {
   directions  Json
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  RouteDriver RouteDriver?
+}
+
+model RouteDriver {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  route       Route @relation(fields: [route_id], references: [id])
+  route_id    String @unique @db.ObjectId
+  points      Point[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 type Place {
@@ -34,4 +44,9 @@ type Place {
 type Coord {
   lat Float
   lng Float
+}
+
+type Point {
+  location Coord
+  createdAt DateTime @default(now())
 }
